@@ -1,6 +1,6 @@
 const readlineSync = require("readline-sync");
 
-let addMembers = "";
+/* let addMembers = "";
 let cast = [];
 
 function askTvSerie() {
@@ -18,4 +18,18 @@ function askTvSerie() {
     };
 }
 
-console.log(JSON.stringify(askTvSerie()));
+console.log(JSON.stringify(askTvSerie())); */
+
+const askTvSerie = () => {
+    const tvshow = {};
+    tvshow.name = readlineSync.question('Please enter the name of your favorite tv show : ');
+    tvshow.year = readlineSync.question('In what year was it produced ? : ');
+    tvshow.cast = [];
+    let keepGoing = true;
+    while (keepGoing) {
+        let input = readlineSync.question('Please give me the cast (type stop to finish): ');
+        input != "stop" ? tvshow.cast.push(input) : keepGoing = false;
+    }
+    return tvshow;
+}
+console.log(`Your favorite show object : ${JSON.stringify(askTvSerie())}`);
